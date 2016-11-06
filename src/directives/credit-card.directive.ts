@@ -144,7 +144,7 @@ export class CreditCardDirective {
 
       console.log('after replace', value);
 
-      this.formatCardNumber(value);
+      value = CreditCard.formatCardNumber(value);
 
       CreditCard.safeVal(value, this.target);
     });

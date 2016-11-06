@@ -137,35 +137,68 @@ export class CreditCard {
     }
   }
 
-  public static safeVal(value, target) {
-  let cursor = null,
-      last   = target.value;
+  public static formatCardNumber(num) {
+    let card,
+        groups,
+        upperLength,
+        _ref;
 
-  try {
-    cursor = target.selectionStart;
-  } catch (error) {}
+    num = num.replace(/\D/g, '');
+    card = this.cardFromNumber(num);
 
-  target.value = value;
-
-  if (cursor !== null && target === document.activeElement) {
-    if (cursor === last.length) {
-      cursor = value.length;
+    if (!card) {
+      return num;
     }
 
-    if (last !== value) {
-      let prevPair = last.slice(cursor - 1, +cursor + 1 || 9e9),
-          currPair = value.slice(cursor - 1, +cursor + 1 || 9e9),
-          digit = value[cursor];
+    upperLength = card.length[card.length.length - 1];
+    num = num.slice(0, upperLength);
 
-      if (/\d/.test(digit) && prevPair === (`${digit} `) && currPair === (` ${digit}`)) {
-        cursor = cursor + 1;
+    if (card.format.global) {
+      let matches = num.match(card.format);
+      if (matches != null) {
+        return matches.join(' ');
       }
+    } else {
+      groups = card.format.exec(num);
+      if (groups == null) {
+        return;
+      }
+      groups.shift();
+      delete(groups.index);
+      delete(groups.input);
+      return groups.join(' ');
     }
-
-    target.selectionStart = cursor;
-    target.selectionEnd   = cursor;
   }
-}
+
+  public static safeVal(value, target) {
+    let cursor = null,
+        last   = target.value;
+
+    try {
+      cursor = target.selectionStart;
+    } catch (error) {}
+
+    target.value = value;
+
+    if (cursor !== null && target === document.activeElement) {
+      if (cursor === last.length) {
+        cursor = value.length;
+      }
+
+      if (last !== value) {
+        let prevPair = last.slice(cursor - 1, +cursor + 1 || 9e9),
+            currPair = value.slice(cursor - 1, +cursor + 1 || 9e9),
+            digit = value[cursor];
+
+        if (/\d/.test(digit) && prevPair === (`${digit} `) && currPair === (` ${digit}`)) {
+          cursor = cursor + 1;
+        }
+      }
+
+      target.selectionStart = cursor;
+      target.selectionEnd   = cursor;
+    }
+  }
 
   public static restrictCardNumber(key, target) {
     let card,
