@@ -285,4 +285,16 @@ export class CreditCard {
     }
     return `${mon}${sep}${year}`;
   }
+
+  public static restrictCvc(key, target) {
+    let digit = String.fromCharCode(key);
+    if (!/^\d+$/.test(digit)) {
+      return false;
+    }
+    if (this.hasTextSelected(target)) {
+      return false;
+    }
+    let val = `${target.value}${digit}`;
+    return val.length <= 4;
+  }
 }
