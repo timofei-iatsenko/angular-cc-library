@@ -220,6 +220,21 @@ export class CreditCard {
     }
   }
 
+  public static restrictExpiry(key, target) {
+    let digit,
+        value;
+    digit = String.fromCharCode(key);
+    if (!/^\d+$/.test(digit)) {
+      return false;
+    }
+    if (this.hasTextSelected(target)) {
+      return false;
+    }
+    value = `${target.value}${digit}`.replace(/\D/g, '');
+
+    return value.length > 6;
+  }
+
   public static replaceFullWidthChars(str) {
     if (str === null) {
       str = '';
@@ -241,5 +256,33 @@ export class CreditCard {
       value += chr;
     }
     return value;
+  }
+
+  public static formatExpiry(expiry) {
+    let parts = expiry.match(/^\D*(\d{1,2})(\D+)?(\d{1,4})?/),
+        mon,
+        sep,
+        year;
+
+    if (!parts) {
+      return '';
+    }
+
+    mon  = parts[1] || '';
+    sep  = parts[2] || '';
+    year = parts[3] || '';
+
+    if (year.length > 0) {
+      sep = ' / ';
+    } else if (sep === ' /') {
+      mon = mon.substring(0, 1);
+      sep = '';
+    } else if (mon.length === 2 || sep.length > 0) {
+      sep = ' / ';
+    } else if (mon.length === 1 && (mon !== '0' && mon !== '1')) {
+      mon = `0${mon}`;
+      sep = ' / ';
+    }
+    return `${mon}${sep}${year}`;
   }
 }
