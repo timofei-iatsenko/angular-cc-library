@@ -5,13 +5,12 @@ import { CreditCard } from '../shared/credit-card';
   selector: '[creditCard]'
 })
 
-export class CreditCardDirective {
+export class CreditCardFormatDirective {
 
   public target;
   private cards: Array<any>;
 
-  constructor(private el: ElementRef,
-              private renderer: Renderer) {
+  constructor(private el: ElementRef) {
     this.target = this.el.nativeElement;
     this.cards = CreditCard.cards();
   }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { CreditCardDirective } from '../../src/directives/credit-card.directive';
+import { CreditCardFormatDirective } from '../../src/directives/credit-card-format.directive';
 
 import { AppComponent } from './app.component';
 
@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
   imports: [BrowserModule, ReactiveFormsModule, FormsModule],
   declarations: [
     AppComponent,
-    CreditCardDirective
+    CreditCardFormatDirective
   ],
   bootstrap: [AppComponent]
 })

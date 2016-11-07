@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { CreditCardDirective } from './directives/credit-card.directive';
+import { CreditCardFormatDirective } from './directives/credit-card-format.directive';
 
 
 const CUSTOM_FORM_DIRECTIVES = [
-  CreditCardDirective,
+  CreditCardFormatDirective,
 ];
 
 @NgModule({
