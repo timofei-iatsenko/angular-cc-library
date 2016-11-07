@@ -1,8 +1,8 @@
-import { Directive, ElementRef, Renderer, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener } from '@angular/core';
 import { CreditCard } from '../shared/credit-card';
 
 @Directive({
-  selector: '[creditCard]'
+  selector: '[ccNumber]'
 })
 
 export class CreditCardFormatDirective {
@@ -71,7 +71,6 @@ export class CreditCardFormatDirective {
       return;
     }
 
-
     if ((this.target.selectionStart != null) && this.target.selectionStart !== value.length) {
       return;
     }
@@ -84,12 +83,12 @@ export class CreditCardFormatDirective {
 
     if (re.test(value)) {
       e.preventDefault();
-      return setTimeout(() => {
+      setTimeout(() => {
         this.target.value = `${value} ${digit}`;
       });
     } else if (re.test(value + digit)) {
       e.preventDefault();
-      return setTimeout(() => {
+      setTimeout(() => {
         this.target.value = `${value}${digit} `;
       });
     }
@@ -108,13 +107,13 @@ export class CreditCardFormatDirective {
 
     if (/\d\s$/.test(value)) {
       e.preventDefault();
-      return setTimeout(function() {
-        return this.target.value = value.replace(/\d\s$/, '');
+      setTimeout(() => {
+        this.target.value = value.replace(/\d\s$/, '');
       });
     } else if (/\s\d?$/.test(value)) {
       e.preventDefault();
-      return setTimeout(function() {
-        return this.target.value = value.replace(/\d$/, '');
+      setTimeout(() => {
+        this.target.value = value.replace(/\d$/, '');
       });
     }
 }
@@ -138,14 +137,10 @@ export class CreditCardFormatDirective {
   }
 
   private reFormatCardNumber(e) {
-    return setTimeout(() => {
-      let value = CreditCard.replaceFullWidthChars(this.target.value);
-
-      console.log('after replace', value);
-
-      value = CreditCard.formatCardNumber(value);
-
-      CreditCard.safeVal(value, this.target);
+    setTimeout(() => {
+      let val = CreditCard.replaceFullWidthChars(this.target.value);
+      val = CreditCard.formatCardNumber(val);
+      CreditCard.safeVal(val, this.target);
     });
   }
 

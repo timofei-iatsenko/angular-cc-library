@@ -1,8 +1,8 @@
-import { Directive, ElementRef, Renderer, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener } from '@angular/core';
 import { CreditCard } from '../shared/credit-card';
 
 @Directive({
-  selector: '[expirationDate]'
+  selector: '[ccExp]'
 })
 
 export class ExpirayFormatDirective {
@@ -39,12 +39,12 @@ export class ExpirayFormatDirective {
     if (!/^\d+$/.test(digit)) {
       if (/^\d$/.test(val) && (val !== '0' && val !== '1')) {
         e.preventDefault();
-        setTimeout(function() {
-          return this.target.value = `0${val} / `;
+        setTimeout(() => {
+          this.target.value = `0${val} / `;
         });
       } else if (/^\d\d$/.test(val)) {
         e.preventDefault();
-        setTimeout(function() {
+        setTimeout(() => {
           let m1 = parseInt(val[0], 10),
               m2 = parseInt(val[1], 10);
           if (m2 > 2 && m1 !== 0) {
@@ -55,8 +55,6 @@ export class ExpirayFormatDirective {
         });
       }
     }
-
-
   }
 
   private formatForwardSlashAndSpace(e) {
@@ -92,7 +90,7 @@ export class ExpirayFormatDirective {
     if (/\d\s\/\s$/.test(val)) {
       e.preventDefault();
       setTimeout(function() {
-        return this.target.value = val.replace(/\d\s\/\s$/, '');
+        this.target.value = val.replace(/\d\s\/\s$/, '');
       });
     }
   }
