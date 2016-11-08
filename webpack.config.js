@@ -7,7 +7,7 @@ module.exports = {
     vendor: './example/vendor',
     polyfills: './example/polyfills'
   },
-  devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
   output: {
     path: './dist',
     filename: 'bundle.js',
