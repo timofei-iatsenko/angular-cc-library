@@ -1,5 +1,6 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 import { CreditCard } from '../shared/credit-card';
+import { Validator, AbstractControl, Validators, ValidatorFn } from '@angular/forms';
 
 @Directive({
   selector: '[ccNumber]'

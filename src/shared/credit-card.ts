@@ -297,4 +297,25 @@ export class CreditCard {
     let val = `${target.value}${digit}`;
     return val.length <= 4;
   }
+
+  public static luhnCheck(num) {
+    let digit,
+        digits = num.split('').reverse(),
+        odd    = true,
+        sum    = 0;
+
+    for (let i = 0; i < digits.length; i++) {
+      digit = digits[i];
+      digit = parseInt(digit, 10);
+      if ((odd = !odd)) {
+        digit *= 2;
+      }
+      if (digit > 9) {
+        digit -= 9;
+      }
+      sum += digit;
+    }
+
+    return sum % 10 === 0;
+  }
 }
