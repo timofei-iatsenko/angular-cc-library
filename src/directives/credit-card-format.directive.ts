@@ -1,6 +1,5 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 import { CreditCard } from '../shared/credit-card';
-import { Validator, AbstractControl, Validators, ValidatorFn } from '@angular/forms';
 
 @Directive({
   selector: '[ccNumber]'
@@ -141,7 +140,7 @@ export class CreditCardFormatDirective {
     setTimeout(() => {
       let val = CreditCard.replaceFullWidthChars(this.target.value);
       val = CreditCard.formatCardNumber(val);
-      CreditCard.safeVal(val, this.target);
+      this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(val, this.target);
     });
   }
 

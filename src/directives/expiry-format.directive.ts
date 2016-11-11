@@ -14,6 +14,7 @@ export class ExpirayFormatDirective {
   }
 
   @HostListener('keypress', ['$event']) onKeypress(e) {
+    console.log(CreditCard.restrictExpiry(e.which, this.target));
     if (CreditCard.restrictNumeric(e) && CreditCard.restrictExpiry(e.which, this.target)) {
       this.formatExpiry(e);
       this.formatForwardSlashAndSpace(e);
@@ -26,7 +27,7 @@ export class ExpirayFormatDirective {
     }
   }
   @HostListener('change', ['$event']) onChange(e) {
-    this.reformatExpiry(e)
+    this.reformatExpiry(e);
   }
   @HostListener('input', ['$event']) onInput(e) {
     this.reformatExpiry(e);
@@ -100,7 +101,7 @@ export class ExpirayFormatDirective {
       let val = this.target.value;
       val = CreditCard.replaceFullWidthChars(val);
       val = CreditCard.formatExpiry(val);
-      CreditCard.safeVal(val, this.target);
+      this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(val, this.target);
     });
   }
 
