@@ -1,7 +1,7 @@
 {
   "name": "ng2-validation",
-  "version": "2.0.0",
-  "description": "angular2 validation",
+  "version": "0.0.1",
+  "description": "angular2 credit card library",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
@@ -14,19 +14,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yuyang041060120/angular2-validate.git"
+    "url": "git+https://github.com/nogorilla/ng2-cc-library.git"
   },
   "keywords": [
     "angular2",
     "validate",
-    "validation"
+    "validation",
+    "credit card",
+    "credit card format"
   ],
-  "author": "yuyang041060120 <yuyang041060120@gmail.com>",
+  "author": "nogorilla <gabriel.smith010@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yuyang041060120/angular2-validate/issues"
+    "url": "https://github.com/nogorilla/ng2-cc-library/issues"
   },
-  "homepage": "https://github.com/yuyang041060120/angular2-validate#readme",
+  "homepage": "https://github.com/nogorilla/ng2-cc-library#readme",
   "devDependencies": {
     "@angular/common": "2.0.0",
     "@angular/compiler": "2.0.0",
@@ -39,11 +41,15 @@
     "@types/node": "^4.0.29",
     "core-js": "^2.4.1",
     "jasmine-core": "^2.4.1",
-    "karma": "^1.1.1",
+    "karma-chrome-launcher": "^2.0.0 ",
+    "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.0.2",
-    "karma-phantomjs-launcher": "^1.0.1",
+    "karma-mocha-reporter": "^2.0.0",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-remap-coverage": "^0.1.1",
+    "karma-remap-istanbul": "^0.2.1",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^1.7.0",
+    "karma-webpack": "1.8.0",
     "phantomjs-prebuilt": "^2.1.7",
     "raw-loader": "^0.5.1",
     "reflect-metadata": "^0.1.3",
@@ -53,6 +59,6 @@
     "typescript": "^2.0.0-beta",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
-    "zone.js": "^0.6.12"
+    "zone.js": "^0.6.14"
   }
 }

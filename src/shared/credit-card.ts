@@ -120,7 +120,7 @@ export class CreditCard {
   }
 
   public static hasTextSelected(target) {
-    return target.selectionStart != null && target.selectionStart !== target.selectionEnd;
+    return target.selectionStart !== null && target.selectionStart !== target.selectionEnd;
   }
 
   public static cardType(num) {
@@ -140,8 +140,7 @@ export class CreditCard {
   public static formatCardNumber(num) {
     let card,
         groups,
-        upperLength,
-        _ref;
+        upperLength;
 
     num = num.replace(/\D/g, '');
     card = this.cardFromNumber(num);
@@ -172,7 +171,8 @@ export class CreditCard {
 
   public static safeVal(value, target) {
     let cursor = null,
-        last   = target.value;
+        last   = target.value,
+        result: any = false;
 
     try {
       cursor = target.selectionStart;
@@ -195,39 +195,36 @@ export class CreditCard {
         }
       }
 
-      target.selectionStart = cursor;
-      target.selectionEnd   = cursor;
+     result = cursor;
     }
+    return result;
   }
 
   public static restrictCardNumber(key, target) {
     let card,
         digit,
-        value;
+        value,
+        result;
     digit = String.fromCharCode(key);
-    if (!/^\d+$/.test(digit)) {
-      return;
-    }
-    if (CreditCard.hasTextSelected(target)) {
-      return;
+    if (!/^\d+$/.test(digit) && CreditCard.hasTextSelected(target)) {
+      result = false;
     }
     value = (target.value + digit).replace(/\D/g, '');
     card = CreditCard.cardFromNumber(value);
     if (card) {
-      return value.length <= card.length[card.length.length - 1];
+      result = value.length <= card.length[card.length.length - 1];
     } else {
-      return value.length <= 16;
+      result = value.length <= 16;
     }
+
+    return result;
   }
 
   public static restrictExpiry(key, target) {
     let digit,
         value;
     digit = String.fromCharCode(key);
-    if (!/^\d+$/.test(digit)) {
-      return false;
-    }
-    if (this.hasTextSelected(target)) {
+    if (!/^\d+$/.test(digit) || this.hasTextSelected(target)) {
       return false;
     }
     value = `${target.value}${digit}`.replace(/\D/g, '');
@@ -288,10 +285,7 @@ export class CreditCard {
 
   public static restrictCvc(key, target) {
     let digit = String.fromCharCode(key);
-    if (!/^\d+$/.test(digit)) {
-      return false;
-    }
-    if (this.hasTextSelected(target)) {
+    if (!/^\d+$/.test(digit) || this.hasTextSelected(target)) {
       return false;
     }
     let val = `${target.value}${digit}`;

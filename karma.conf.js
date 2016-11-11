@@ -1,6 +1,6 @@
 module.exports = function (config) {
     var _config = {
-      basePath: './',
+      basePath: '',
 
       frameworks: ['jasmine'],
 
@@ -38,13 +38,13 @@ module.exports = function (config) {
           noInfo: true
       },
 
-      reporters: ['progress'],
+      reporters: ['mocha'],
       port: 9876,
       colors: true,
       logLevel: config.LOG_INFO,
-      autoWatch: false,
+      autoWatch: true,
       browsers: ['PhantomJS'],
-      singleRun: true
+      singleRun: false
   };
 
   config.set(_config);
