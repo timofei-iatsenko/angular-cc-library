@@ -16,27 +16,27 @@ All fields must be `type='tel'` in order to support spacing and additional chara
 
 **Credit Card Formater**
 * add `ccNumber` directive:
-```
+```html
 <input id="cc-number" type="tel" autocomplete="cc-number" ccNumber>
 ```
 
 **Expiration Date Formater**
 Will support format of MM/YY or MM/YYYY
 * add `ccExp` directive:
-```
+```html
 <input id="cc-exp-date" type="tel" autocomplete="cc-exp" ccExp>
 ```
 
 **CVC Formater**
 * add `ccCvc` directive:
-```
+```html
 <input id="cc-cvc" type="tel" autocomplete="off" ccCvc>
 ```
 
 ### Validation
 Current only Model Validation is supported.
 To implement, import the validator library and apply the specific validator on each form control
-```
+```javascript
 import { CreditCardValidator } from '../../src/validators/credit-card.validator';
 
 @Component({
