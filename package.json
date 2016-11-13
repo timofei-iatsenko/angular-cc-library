@@ -1,5 +1,5 @@
 {
-  "name": "ng2-validation",
+  "name": "ng2-cc-library",
   "version": "0.0.1",
   "description": "angular2 credit card library",
   "main": "dist/index.js",
