@@ -77,10 +77,3 @@ Based on Stripe's [jquery.payment](https://github.com/stripe/jquery.payment) plu
 # License
 
 MIT
-
-# TODO
-- [x] Documentation
-- [x] Unit Tests
-- [ ] Protractor Tests
-- [ ] Validate cvc input length against value from card object
-- [ ] publish to NPM
