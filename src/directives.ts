@@ -4,16 +4,15 @@ import { CreditCardFormatDirective } from './directives/credit-card-format.direc
 import { ExpirayFormatDirective } from './directives/expiry-format.directive';
 import { CvcFormatDirective } from './directives/cvc-format.directive';
 
-
-const CUSTOM_FORM_DIRECTIVES = [
+const CREDIT_CARD_LIBRARY_DIRECTIVES = [
   CreditCardFormatDirective,
   ExpirayFormatDirective,
   CvcFormatDirective
 ];
 
 @NgModule({
-  declarations: [CUSTOM_FORM_DIRECTIVES],
-  exports: [CUSTOM_FORM_DIRECTIVES]
+  declarations: [CREDIT_CARD_LIBRARY_DIRECTIVES],
+  exports: [CREDIT_CARD_LIBRARY_DIRECTIVES]
 })
-export class CustomFormsModule {
+export class CreditCardDirectivesModule {
 }

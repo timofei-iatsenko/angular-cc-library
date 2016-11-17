@@ -1,5 +1,5 @@
 import { AbstractControl, Validators } from '@angular/forms';
-import { CreditCard } from '../shared/credit-card';
+import { CreditCard } from './shared/credit-card';
 
 export class CreditCardValidator {
   static validateCCNumber(control: AbstractControl): any {

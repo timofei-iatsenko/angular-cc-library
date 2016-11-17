@@ -37,6 +37,23 @@ Will support format of MM/YY or MM/YYYY
 Current only Model Validation is supported.
 To implement, import the validator library and apply the specific validator on each form control
 ```javascript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { CreditCardDirectivesModule } from 'ng2-cc-library'
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+    imports: [BrowserModule, FormsModule, CreditCardDirectivesModule],
+    declarations: [AppComponent],
+    bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
+
+```javascript
 import { CreditCardValidator } from '../../src/validators/credit-card.validator';
 
 @Component({
