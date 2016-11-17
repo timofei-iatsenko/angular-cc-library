@@ -10,9 +10,32 @@ Angular2 CC Library - for validation and formating of input parameters
 
 # Usage
 
+## Installation
+```shell
+npm install ng2-cc-library --save
+```
+
+
 ## Formating Directive
 On the input fields, add the specific directive to format inputs. 
 All fields must be `type='tel'` in order to support spacing and additional characters
+
+```javascript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { CreditCardDirectivesModule } from 'ng2-cc-library'
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+    imports: [BrowserModule, FormsModule, CreditCardDirectivesModule],
+    declarations: [AppComponent],
+    bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
 
 **Credit Card Formater**
 * add `ccNumber` directive:
@@ -36,25 +59,9 @@ Will support format of MM/YY or MM/YYYY
 ### Validation
 Current only Model Validation is supported.
 To implement, import the validator library and apply the specific validator on each form control
-```javascript
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { CreditCardDirectivesModule } from 'ng2-cc-library'
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-    imports: [BrowserModule, FormsModule, CreditCardDirectivesModule],
-    declarations: [AppComponent],
-    bootstrap: [AppComponent]
-})
-export class AppModule {
-}
-```
 
 ```javascript
-import { CreditCardValidator } from '../../src/validators/credit-card.validator';
+import { CreditCardValidator } from 'ng2-cc-library';
 
 @Component({
   selector: 'app',

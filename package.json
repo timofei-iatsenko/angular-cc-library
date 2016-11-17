@@ -1,6 +1,6 @@
 {
   "name": "ng2-cc-library",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "description": "angular2 credit card library",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

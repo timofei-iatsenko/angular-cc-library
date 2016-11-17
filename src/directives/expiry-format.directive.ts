@@ -14,7 +14,6 @@ export class ExpirayFormatDirective {
   }
 
   @HostListener('keypress', ['$event']) onKeypress(e) {
-    console.log(CreditCard.restrictExpiry(e.which, this.target));
     if (CreditCard.restrictNumeric(e) && CreditCard.restrictExpiry(e.which, this.target)) {
       this.formatExpiry(e);
       this.formatForwardSlashAndSpace(e);
