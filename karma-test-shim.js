@@ -11,7 +11,7 @@ require('zone.js/dist/sync-test');
 require('zone.js/dist/proxy'); // since zone.js 0.6.14
 require('zone.js/dist/jasmine-patch');
 
-var appContext = require.context('./src/specs', true, /\.spec\.ts/);
+var appContext = require.context('./src/', true, /\.spec\.ts/);
 
 appContext.keys().forEach(appContext);
 

@@ -5,7 +5,7 @@ import { CreditCard } from '../shared/credit-card';
   selector: '[ccExp]'
 })
 
-export class ExpirayFormatDirective {
+export class ExpiryFormatDirective {
 
   public target;
 
@@ -14,10 +14,15 @@ export class ExpirayFormatDirective {
   }
 
   @HostListener('keypress', ['$event']) onKeypress(e) {
-    if (CreditCard.restrictNumeric(e) && CreditCard.restrictExpiry(e.which, this.target)) {
-      this.formatExpiry(e);
-      this.formatForwardSlashAndSpace(e);
-      this.formatForwardExpiry(e);
+    if (CreditCard.restrictNumeric(e)) {
+      if (CreditCard.restrictExpiry(e.which, this.target)) {
+        this.formatExpiry(e);
+        this.formatForwardSlashAndSpace(e);
+        this.formatForwardExpiry(e);
+      }
+    } else {
+      e.preventDefault();
+      return false;
     }
   }
   @HostListener('keydown', ['$event']) onKeydown(e) {

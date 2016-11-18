@@ -1,6 +1,6 @@
 import { CreditCard } from '../shared/credit-card';
 
-describe('Credit Card', () => {
+describe('Shared: Credit Card', () => {
 
   beforeEach(() => {
   });
@@ -13,7 +13,7 @@ describe('Credit Card', () => {
       patterns: [4],
       format: /(\d{1,4})/g,
       length: [13, 16],
-      cvcLength: [3],
+      cvvLength: [3],
       luhn: true
     });
   });
@@ -91,10 +91,10 @@ describe('Credit Card', () => {
       value: '411111111111111'
     };
 
-    expect(CreditCard.restrictCardNumber(key, target)).toBe(true);
+    expect(CreditCard.isCardNumber(key, target)).toBe(true);
 
     target.value = '41111111111111111';
-    expect(CreditCard.restrictCardNumber(key, target)).toBe(false);
+    expect(CreditCard.isCardNumber(key, target)).toBe(false);
 
   });
 
@@ -128,7 +128,7 @@ describe('Credit Card', () => {
     expect(CreditCard.formatExpiry('123456')).toBe('12 / 3456');
   });
 
-  it('should restrict CVC', () => {
+  it('should restrict CVV', () => {
     let key = 1;
     let target = {
       selectionStart: null,
