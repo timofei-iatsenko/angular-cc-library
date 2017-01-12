@@ -5,7 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import { CreditCardFormatDirective } from '../../src/directives/credit-card-format.directive';
-import { ExpirayFormatDirective } from '../../src/directives/expiry-format.directive';
+import { ExpiryFormatDirective } from '../../src/directives/expiry-format.directive';
 import { CvcFormatDirective } from '../../src/directives/cvc-format.directive';
 
 @NgModule({
@@ -13,7 +13,7 @@ import { CvcFormatDirective } from '../../src/directives/cvc-format.directive';
   declarations: [
     AppComponent,
     CreditCardFormatDirective,
-    ExpirayFormatDirective,
+    ExpiryFormatDirective,
     CvcFormatDirective
   ],
   bootstrap: [AppComponent]

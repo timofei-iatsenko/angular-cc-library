@@ -1,4 +1,4 @@
-<form #demoForm="ngForm" (ngSubmit)="onSubmit(demoForm)" novalidate>
+<form [formGroup]="demoForm" (ngSubmit)="onSubmit(demoForm)" novalidate>
   <p>A general purpose library for building credit card forms, validating inputs and formatting numbers.</p>
   <div class="form-group">
     <label for="cc-number" class="control-label">Card number formatting <small class="text-muted">[<span class="cc-brand"></span>]</small></label>
