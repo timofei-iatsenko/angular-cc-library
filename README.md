@@ -42,6 +42,7 @@ export class AppModule {
 ```html
 <input id="cc-number" type="tel" autocomplete="cc-number" ccNumber>
 ```
+* this will also apply a class name based off the card `.visa`, `.amex`, etc. See the array of card types in `credit-card.ts` for all available types
 
 **Expiration Date Formater**
 Will support format of MM/YY or MM/YYYY
