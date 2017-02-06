@@ -1,6 +1,6 @@
 # Description
 
-Angular2 CC Library - for validation and formating of input parameters
+Angular CC Library - for validation and formating of input parameters
 
 # Demo
 1. Clone repo
@@ -12,9 +12,8 @@ Angular2 CC Library - for validation and formating of input parameters
 
 ## Installation
 ```shell
-npm install ng2-cc-library --save
+npm install angular-cc-library --save
 ```
-
 
 ## Formating Directive
 On the input fields, add the specific directive to format inputs. 
