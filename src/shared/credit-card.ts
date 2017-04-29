@@ -163,16 +163,14 @@ export class CreditCard {
         return;
       }
       groups.shift();
-      delete(groups.index);
-      delete(groups.input);
-      return groups.join(' ');
+      return groups.filter(Boolean).join(' ');
     }
   }
 
   public static safeVal(value, target) {
     let cursor = null,
         last   = target.value,
-        result: any = false;
+        result: any = null;
 
     try {
       cursor = target.selectionStart;
