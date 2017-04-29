@@ -139,9 +139,9 @@ export class CreditCardFormatDirective {
 
   private reFormatCardNumber(e) {
     setTimeout(() => {
-      let val = CreditCard.replaceFullWidthChars(this.target.value);
-      val = CreditCard.formatCardNumber(val);
-      this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(val, this.target);
+      let value = CreditCard.replaceFullWidthChars(this.target.value);
+      value = CreditCard.formatCardNumber(value);
+      this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(value, this.target);
     });
   }
 
