@@ -23,7 +23,7 @@ All fields must be `type='tel'` in order to support spacing and additional chara
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { CreditCardDirectivesModule } from 'ng2-cc-library'
+import { CreditCardDirectivesModule } from 'angular-cc-library';
 
 import { AppComponent } from './app.component';
 
@@ -61,7 +61,7 @@ Current only Model Validation is supported.
 To implement, import the validator library and apply the specific validator on each form control
 
 ```javascript
-import { CreditCardValidator } from 'ng2-cc-library';
+import { CreditCardValidator } from 'angular-cc-library';
 
 @Component({
   selector: 'app',
