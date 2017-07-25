@@ -53,7 +53,7 @@ Will support format of MM/YY or MM/YYYY
 **CVC Formater**
 * add `ccCvc` directive:
 ```html
-<input id="cc-cvc" type="tel" autocomplete="off" ccCvc>
+<input id="cc-cvc" type="tel" autocomplete="off" ccCVC>
 ```
 
 ### Validation
