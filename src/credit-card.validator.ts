@@ -1,34 +1,34 @@
-import { AbstractControl, Validators } from '@angular/forms';
+import { AbstractControl, ValidationErrors, Validators } from '@angular/forms';
 import { CreditCard } from './shared/credit-card';
 
 export class CreditCardValidator {
-  static validateCCNumber(control: AbstractControl): any {
+  static validateCCNumber(control: AbstractControl): ValidationErrors|null {
     if (Validators.required(control) !== undefined && Validators.required(control) !== null) {
-      return {'ccNumber': false};
+      return {'ccNumber': true};
     }
 
     let num = control.value.toString().replace(/\s+|-/g, '');
 
     if (!/^\d+$/.test(num)) {
-      return {'ccNumber': false};
+      return {'ccNumber': true};
     }
 
     let card = CreditCard.cardFromNumber(num);
 
     if (!card) {
-      return {'ccNumber': false};
+      return {'ccNumber': true};
     }
 
     if (card.length.includes(num.length) && (card.luhn === false || CreditCard.luhnCheck(num))) {
       return null;
     }
 
-    return {'ccNumber': false};
+    return {'ccNumber': true};
   }
 
-  static validateExpDate(control: AbstractControl): any {
+  static validateExpDate(control: AbstractControl): ValidationErrors|null {
     if (Validators.required(control) !== undefined && Validators.required(control) !== null) {
-      return {'expDate': false };
+      return {'expDate': true };
     }
 
     if (typeof control.value !== 'undefined' && control.value.length >= 7) {
@@ -56,7 +56,7 @@ export class CreditCardValidator {
       }
     }
 
-    return {'expDate': false };
+    return {'expDate': true };
 
   }
 }
