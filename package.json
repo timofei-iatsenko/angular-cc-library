@@ -2,21 +2,28 @@
   "name": "angular-cc-library",
   "version": "1.1.1",
   "description": "angular credit card library",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "test": "karma start ./karma.conf.js",
     "dev": "webpack-dev-server --port 4200 --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base",
     "tsc": "tsc --rootDir src --outDir dist --declaration",
-    "ngc": "./node_modules/.bin/ngc",
+    "ngc": "npm run ngc-build",
     "prebuild": "rimraf dist",
     "build": "npm run tsc",
-    "prepublish": "npm run build"
+    "prepublish": "npm run ngc-build",
+    "ngc-build": "rm -rf lib && \"node_modules/.bin/ngc\" -p tsconfig-npm-package.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nogorilla/angular-cc-library.git"
   },
+  "files": [
+    "README.md",
+    "index.d.ts",
+    "index.js",
+    "lib/*"
+  ],
   "keywords": [
     "angular",
     "validate",
