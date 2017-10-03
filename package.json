@@ -1,6 +1,6 @@
 {
   "name": "angular-cc-library",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "angular credit card library",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
