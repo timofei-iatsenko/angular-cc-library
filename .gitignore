@@ -9,3 +9,10 @@ compiled/
 *.ngFactory.ts
 *.js
 *.js.map
+!/index.js
+src/**/*.js
+src/**/*.map
+src/**/*.json
+*.tgz
+aot/*
+lib/*
