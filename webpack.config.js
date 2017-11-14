@@ -9,23 +9,23 @@ module.exports = {
   },
   devtool: 'cheap-module-eval-source-map',
   output: {
-    path: './dist',
+    path: __dirname + '/dist',
     filename: 'bundle.js',
     publicPath: '/dist/'
   },
   resolve: {
-    extensions: ['', '.ts', '.js']
+    extensions: ['.ts', '.js']
   },
   module: {
     loaders: [
       {
         test: /\.ts$/,
         exclude: /\.d\.ts$/,
-        loader: 'ts'
+        loader: 'ts-loader'
       },
       {
         test: /\.html$/,
-        loader: 'raw'
+        loader: 'raw-loader'
       }
     ]
   },
