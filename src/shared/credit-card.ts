@@ -25,7 +25,7 @@ let cards = [
     type: 'visa',
     patterns: [4],
     format: defaultFormat,
-    length: [13, 16],
+    length: [13, 19],
     cvvLength: [3],
     luhn: true
   }, {
