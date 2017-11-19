@@ -20,8 +20,8 @@ export class AppComponent implements OnInit {
     });
   }
 
-  onSubmit(form) {
+  onSubmit(demoForm) {
     this.submitted = true;
-    console.log(form);
+    console.log(demoForm);
   }
 }

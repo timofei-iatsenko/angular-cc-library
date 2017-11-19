@@ -16,9 +16,9 @@
   </div>
   <button type="submit" class="btn btn-lg btn-primary">Submit</button>
   <div class="errors" *ngIf="submitted">
-    <div *ngIf="!form.controls.creditCard.valid" class="alert alert-danger">Credit Card is invalid</div>
-    <div *ngIf="!form.controls.expirationDate.valid" class="alert alert-danger">Expiration Date is required</div>
-    <div *ngIf="!form.controls.cvc.valid" class="alert alert-danger">CVC is required</div>
+    <div *ngIf="!demoForm.controls.creditCard.valid" class="alert alert-danger">Credit Card is invalid</div>
+    <div *ngIf="!demoForm.controls.expDate.valid" class="alert alert-danger">Expiration Date is required</div>
+    <div *ngIf="!demoForm.controls.cvc.valid" class="alert alert-danger">CVC is required</div>
   </div>
 </form>
 
