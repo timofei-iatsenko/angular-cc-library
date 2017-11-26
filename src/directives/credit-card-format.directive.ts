@@ -62,7 +62,7 @@ export class CreditCardFormatDirective {
 
     length = (value.replace(/\D/g, '') + digit).length;
 
-    upperLength = 16;
+    upperLength = 19;
 
     if (card) {
       upperLength = card.length[card.length.length - 1];
@@ -83,12 +83,10 @@ export class CreditCardFormatDirective {
     }
 
     if (re.test(value)) {
-      e.preventDefault();
       setTimeout(() => {
         this.target.value = `${value} ${digit}`;
       });
     } else if (re.test(value + digit)) {
-      e.preventDefault();
       setTimeout(() => {
         this.target.value = `${value}${digit} `;
       });
