@@ -110,7 +110,6 @@ export class CreditCardFormatDirective {
         this.target.value = value.replace(/\d\s$/, '');
       });
     } else if (/\s\d?$/.test(value)) {
-      e.preventDefault();
       setTimeout(() => {
         this.target.value = value.replace(/\d$/, '');
       });
