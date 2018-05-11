@@ -13,14 +13,15 @@ module.exports = function (config) {
       },
 
       webpack: {
+        devtool: 'inline-source-map',
         resolve: {
-          extensions: ['', '.ts', '.js']
+          extensions: [ '.js', '.ts' ]
         },
         module: {
           loaders: [
             {
                 test: /\.ts$/,
-                loader: 'ts'
+                loader: 'ts-loader'
             },
             {
                 test: /\.html$/,
