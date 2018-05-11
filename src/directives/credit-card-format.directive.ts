@@ -28,6 +28,7 @@ export class CreditCardFormatDirective {
   }
   @HostListener('keydown', ['$event']) onKeydown(e) {
     this.formatBackCardNumber(e);
+    this.reFormatCardNumber(e);
   }
   @HostListener('keyup', ['$event']) onKeyup(e) {
     this.setCardType(e);
@@ -47,7 +48,6 @@ export class CreditCardFormatDirective {
     let card,
         digit,
         length,
-        re,
         upperLength,
         value;
 
@@ -71,48 +71,31 @@ export class CreditCardFormatDirective {
     if (length >= upperLength) {
       return;
     }
-
-    if ((this.target.selectionStart != null) && this.target.selectionStart !== value.length) {
-      // return;
-    }
-
-    if (card && card.type === 'amex') {
-      re = /^(\d{4}|\d{4}\s\d{6})$/;
-    } else {
-      re = /(?:^|\s)(\d{4})$/;
-    }
-
-    if (re.test(value)) {
-      setTimeout(() => {
-        this.target.value = `${value} ${digit}`;
-      });
-    } else if (re.test(value + digit)) {
-      setTimeout(() => {
-        this.target.value = `${value}${digit} `;
-      });
-    }
   }
 
   private formatBackCardNumber(e) {
     let value = this.target.value;
+    let selStart = this.target.selectionStart;
 
     if (e.which !== 8) {
       return;
     }
 
-    if ((this.target.selectionStart != null) && this.target.selectionStart !== value.length) {
-      // return;
-    }
-
-    if (/\d\s$/.test(value)) {
+    if (selStart != null
+        && selStart === this.target.selectionEnd
+        && selStart > 0
+        && selStart !== value.length
+        && value[selStart - 1] === ' ') {
       e.preventDefault();
-      setTimeout(() => {
-        this.target.value = value.replace(/\d\s$/, '');
-      });
-    } else if (/\s\d?$/.test(value)) {
-      setTimeout(() => {
-        this.target.value = value.replace(/\d$/, '');
-      });
+      if (selStart <= 2) {
+        this.target.value = value.slice(selStart);
+        this.target.selectionStart = 0;
+        this.target.selectionEnd = 0;
+      } else {
+        this.target.value = value.slice(0, selStart - 2) + value.slice(selStart);
+        this.target.selectionStart = selStart - 2;
+        this.target.selectionEnd = selStart - 2;
+      }
     }
 }
 
@@ -136,6 +119,7 @@ export class CreditCardFormatDirective {
 
   private reFormatCardNumber(e) {
     setTimeout(() => {
+      console.log('reFormatCardNumber TO');
       let value = CreditCard.replaceFullWidthChars(this.target.value);
       value = CreditCard.formatCardNumber(value);
       this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(value, this.target);
