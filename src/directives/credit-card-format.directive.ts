@@ -119,7 +119,6 @@ export class CreditCardFormatDirective {
 
   private reFormatCardNumber(e) {
     setTimeout(() => {
-      console.log('reFormatCardNumber TO');
       let value = CreditCard.replaceFullWidthChars(this.target.value);
       value = CreditCard.formatCardNumber(value);
       this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(value, this.target);
