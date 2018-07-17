@@ -39,6 +39,7 @@ describe('Directive: CreditCardFormat', () => {
     // the value is changed here by the browser as default behavior
     inputEl.nativeElement.value = '4111 11111';
 
+    inputEl.nativeElement.focus();
     inputEl.triggerEventHandler('input', null);
     fixture.detectChanges();
     tick(10);
@@ -69,6 +70,7 @@ describe('Directive: CreditCardFormat', () => {
     fixture.detectChanges();
     expect(inputEl.nativeElement.value).toBe('4111 11111');
 
+    inputEl.nativeElement.focus();
     inputEl.triggerEventHandler('keyup', {keyCode: 49, which: 49});
     fixture.detectChanges();
     expect(inputEl.nativeElement.value).toBe('4111 11111');
