@@ -105,7 +105,9 @@ export class ExpiryFormatDirective {
       let val = this.target.value;
       val = CreditCard.replaceFullWidthChars(val);
       val = CreditCard.formatExpiry(val);
-      this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(val, this.target);
+      if (this.target === document.activeElement) {
+        this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(val, this.target);
+      }
     });
   }
 

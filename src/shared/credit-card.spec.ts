@@ -12,7 +12,7 @@ describe('Shared: Credit Card', () => {
       type: 'visa',
       patterns: [4],
       format: /(\d{1,4})/g,
-      length: [13, 16],
+      length: [13, 16, 19],
       cvvLength: [3],
       luhn: true
     });
@@ -69,8 +69,7 @@ describe('Shared: Credit Card', () => {
       selectionEnd: 2
     };
 
-    expect(CreditCard.safeVal(value, target)).toBe(false);
-
+    expect(CreditCard.safeVal(value, target)).toBe(null);
 
     let element = document.createElement('input');
     document.body.appendChild(element);
@@ -93,7 +92,7 @@ describe('Shared: Credit Card', () => {
 
     expect(CreditCard.isCardNumber(key, target)).toBe(true);
 
-    target.value = '41111111111111111';
+    target.value = '41111111111111111111';
     expect(CreditCard.isCardNumber(key, target)).toBe(false);
 
   });
@@ -151,4 +150,3 @@ describe('Shared: Credit Card', () => {
     expect(CreditCard.luhnCheck('4511111111111111')).toBe(false);
   });
 });
-
