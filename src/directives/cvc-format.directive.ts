@@ -33,7 +33,8 @@ export class CvcFormatDirective {
     setTimeout(() => {
       let val = CreditCard.replaceFullWidthChars(this.target.value);
       val = val.replace(/\D/g, '').slice(0, 4);
-      if (this.target === document.activeElement) {
+      const oldVal = this.target.value;
+      if (val !== oldVal) {
         this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(val, this.target);
       }
     });
