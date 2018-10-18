@@ -38,7 +38,6 @@ export class ExpiryFormatDirective {
   }
 
   private formatExpiry(e) {
-    console.log('format');
     let digit = String.fromCharCode(e.which),
         val   = `${this.target.value}${digit}`;
 
