@@ -1,6 +1,6 @@
 {
   "name": "angular-cc-library",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "angular credit card library",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -51,7 +51,7 @@
     "@types/node": "^8.0.31",
     "core-js": "^2.5.1",
     "jasmine-core": "^2.8.0",
-    "karma": "^1.7.1",
+    "karma": "^3.1.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",
     "karma-jasmine": "^1.1.0",
@@ -60,7 +60,7 @@
     "karma-remap-coverage": "^0.1.4",
     "karma-remap-istanbul": "^0.6.0",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "2.0.4",
+    "karma-webpack": "^3.0.5",
     "phantomjs-prebuilt": "^2.1.16",
     "raw-loader": "^0.5.1",
     "reflect-metadata": "^0.1.10",
@@ -68,8 +68,8 @@
     "rxjs": "5.4.3",
     "ts-loader": "^2.3.7",
     "typescript": "^2.5.3",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1",
+    "webpack": "^4.26.1",
+    "webpack-dev-server": "^3.1.10",
     "zone.js": "^0.8.18"
   }
 }
