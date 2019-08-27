@@ -167,7 +167,7 @@ export class CreditCard {
     }
   }
 
-  public static safeVal(value, target) {
+  public static safeVal(value: string, target: any, updateValue: (value: string) => void) {
     let cursor = null,
         last   = target.value,
         result: any = null;
@@ -176,7 +176,7 @@ export class CreditCard {
       cursor = target.selectionStart;
     } catch (error) {}
 
-    target.value = value;
+    updateValue(value);
 
     if (cursor !== null && target === document.activeElement) {
       if (cursor === last.length) {

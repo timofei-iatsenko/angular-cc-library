@@ -69,7 +69,7 @@ describe('Shared: Credit Card', () => {
       selectionEnd: 2
     };
 
-    expect(CreditCard.safeVal(value, target)).toBe(null);
+    expect(CreditCard.safeVal(value, target, (value) => target.value = value)).toBe(null);
 
     let element = document.createElement('input');
     document.body.appendChild(element);
@@ -79,7 +79,7 @@ describe('Shared: Credit Card', () => {
     target.selectionStart = 1;
     target.value = '4111111111111111';
 
-    expect(CreditCard.safeVal(target.value, target)).toBe(16);
+    expect(CreditCard.safeVal(target.value, target, (value) => target.value = value)).toBe(16);
 
   });
 

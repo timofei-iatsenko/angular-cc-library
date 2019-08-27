@@ -1,5 +1,6 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, Optional, Self } from '@angular/core';
 import { CreditCard } from '../shared/credit-card';
+import { NgControl } from "@angular/forms";
 
 @Directive({
   selector: '[ccNumber]'
@@ -10,9 +11,22 @@ export class CreditCardFormatDirective {
   public target;
   private cards: Array<any>;
 
-  constructor(private el: ElementRef) {
+  constructor(private el: ElementRef,
+              @Self() @Optional() private control: NgControl) {
     this.target = this.el.nativeElement;
     this.cards = CreditCard.cards();
+  }
+
+  /**
+   * Updates the value to target element, or FormControl if exists.
+   * @param value New input value.
+   */
+  private updateValue(value: string) {
+    if (this.control) {
+      this.control.control.setValue(value);
+    } else {
+      this.target.value = value;
+    }
   }
 
   @HostListener('keypress', ['$event']) onKeypress(e) {
@@ -88,11 +102,11 @@ export class CreditCardFormatDirective {
         && value[selStart - 1] === ' ') {
       e.preventDefault();
       if (selStart <= 2) {
-        this.target.value = value.slice(selStart);
+        this.updateValue(value.slice(selStart));
         this.target.selectionStart = 0;
         this.target.selectionEnd = 0;
       } else {
-        this.target.value = value.slice(0, selStart - 2) + value.slice(selStart);
+        this.updateValue(value.slice(0, selStart - 2) + value.slice(selStart));
         this.target.selectionStart = selStart - 2;
         this.target.selectionEnd = selStart - 2;
       }
@@ -123,7 +137,9 @@ export class CreditCardFormatDirective {
       value = CreditCard.formatCardNumber(value);
       const oldValue = this.target.value;
       if (value !== oldValue) {
-        this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(value, this.target);
+        this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(value, this.target, (safeVal => {
+          this.updateValue(safeVal);
+        }));
       }
     });
   }
