@@ -1,5 +1,6 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, Optional, Self } from '@angular/core';
 import { CreditCard } from '../shared/credit-card';
+import { NgControl } from "@angular/forms";
 
 @Directive({
   selector: '[ccExp]'
@@ -9,8 +10,21 @@ export class ExpiryFormatDirective {
 
   public target;
 
-  constructor(private el: ElementRef) {
+  constructor(private el: ElementRef,
+              @Self() @Optional() private control: NgControl) {
     this.target = this.el.nativeElement;
+  }
+
+  /**
+   * Updates the value to target element, or FormControl if exists.
+   * @param value New input value.
+   */
+  private updateValue(value: string) {
+    if (this.control) {
+      this.control.control.setValue(value);
+    } else {
+      this.target.value = value;
+    }
   }
 
   @HostListener('keypress', ['$event']) onKeypress(e) {
@@ -45,7 +59,7 @@ export class ExpiryFormatDirective {
       if (/^\d$/.test(val) && (val !== '0' && val !== '1')) {
         e.preventDefault();
         setTimeout(() => {
-          this.target.value = `0${val} / `;
+          this.updateValue(`0${val} / `);
         });
       } else if (/^\d\d$/.test(val)) {
         e.preventDefault();
@@ -53,9 +67,9 @@ export class ExpiryFormatDirective {
           let m1 = parseInt(val[0], 10),
               m2 = parseInt(val[1], 10);
           if (m2 > 2 && m1 !== 0) {
-            this.target.value = `0${m1} / ${m2}`;
+            this.updateValue(`0${m1} / ${m2}`);
           } else {
-            this.target.value = `${val} / `;
+            this.updateValue(`${val} / `);
           }
         });
       }
@@ -70,7 +84,7 @@ export class ExpiryFormatDirective {
       return false;
     }
     if (/^\d$/.test(val) && val !== '0') {
-      this.target.value = `0${val} / `;
+      this.updateValue(`0${val} / `);
     }
   }
 
@@ -79,7 +93,7 @@ export class ExpiryFormatDirective {
         val   = this.target.value;
 
     if (!/^\d+$/.test(digit) && /^\d\d$/.test(val)) {
-      this.target.value = `${val} / `;
+      this.updateValue(this.target.value = `${val} / `);
     }
   }
 
@@ -95,7 +109,7 @@ export class ExpiryFormatDirective {
     if (/\d\s\/\s$/.test(val)) {
       e.preventDefault();
       setTimeout(function() {
-        this.target.value = val.replace(/\d\s\/\s$/, '');
+        this.updateValue(val.replace(/\d\s\/\s$/, ''));
       });
     }
   }
@@ -107,7 +121,9 @@ export class ExpiryFormatDirective {
       val = CreditCard.formatExpiry(val);
       const oldVal = this.target.value;
       if (val !== oldVal) {
-        this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(val, this.target);
+        this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(val, this.target, (safeVal => {
+          this.updateValue(safeVal);
+        }));
       }
     });
   }
