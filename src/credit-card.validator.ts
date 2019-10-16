@@ -39,7 +39,7 @@ export class CreditCardValidator {
       return {'expDate': true };
     }
 
-    if (typeof control.value !== 'undefined' && control.value.length >= 7) {
+    if (typeof control.value !== 'undefined' && control.value.length >= 5) {
       let [month, year] = control.value.split(/[\s\/]+/, 2),
           prefix;
 
