@@ -1,3 +1,6 @@
+# Note
+Originally forked from (Angular CC Library)['https://github.com/nogorilla/angular-cc-library']
+
 # Description
 
 Angular CC Library - for validation and formating of input parameters
