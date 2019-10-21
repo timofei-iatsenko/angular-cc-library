@@ -7,7 +7,7 @@ export class CreditCardValidator {
       return {'ccNumber': true};
     }
 
-    let num = control.value.toString().replace(/\s+|-/g, '');
+    let num = control.value.toString().replace(/\s+|-|_/g, '');
 
     if (!/^\d+$/.test(num)) {
       return {'ccNumber': true};
