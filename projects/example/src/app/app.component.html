@@ -1,0 +1,52 @@
+<form [formGroup]="demoForm"
+      (ngSubmit)="onSubmit(demoForm)"
+      novalidate
+      style="max-width: 500px; margin: 0 auto; padding-top: 20px;">
+    <p>A general purpose library for building credit card forms, validating inputs and formatting numbers.</p>
+    <div class="form-group">
+        <label for="cc-number" class="control-label">Card number formatting
+            <small class="text-muted"
+                   *ngIf="type$ | async as type">[<span class="cc-brand">{{type}}</span>]</small></label>
+        <input id="cc-number"
+               (input)="goToNextField('creditCard', expireInput)"
+               formControlName="creditCard"
+               type="tel"
+               class="input-lg form-control cc-number"
+               autocomplete="cc-number"
+               placeholder="•••• •••• •••• ••••"
+               ccNumber>
+    </div>
+
+    <div class="form-group">
+        <label for="cc-exp" class="control-label">Card expiry formatting</label>
+        <input id="cc-exp"
+               (input)="goToNextField('expDate', cvcInput)"
+               #expireInput
+               formControlName="expDate"
+               type="tel"
+               class="input-lg form-control cc-exp"
+               autocomplete="cc-exp"
+               placeholder="•• / ••"
+               ccExp>
+    </div>
+
+    <div class="form-group">
+        <label for="cc-cvc" class="control-label">Card CVC formatting</label>
+        <input id="cc-cvc"
+               #cvcInput
+               formControlName="cvc"
+               type="tel"
+               class="input-lg form-control cc-cvc"
+               autocomplete="off"
+               placeholder="•••"
+               required
+               ccCVC>
+    </div>
+
+    <div class="errors">
+        <div *ngIf="!demoForm.controls.creditCard.valid && demoForm.controls.creditCard.dirty" class="alert alert-danger">Credit Card is invalid</div>
+        <div *ngIf="!demoForm.controls.expDate.valid && demoForm.controls.expDate.dirty" class="alert alert-danger">Expiration Date is required</div>
+        <div *ngIf="!demoForm.controls.cvc.valid  && demoForm.controls.cvc.dirty" class="alert alert-danger">CVC is required</div>
+    </div>
+</form>
+
