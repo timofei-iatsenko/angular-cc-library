@@ -4,8 +4,8 @@ Angular CC Library - for validation and formating of input parameters
 
 # Demo
 1. Clone repo
-2. run `npm install`
-3. run `npm run dev`
+2. run `yarn install`
+3. run `yarn run:demo`
 4. visit `http://localhost:4200`
 
 # Usage
@@ -15,7 +15,7 @@ Angular CC Library - for validation and formating of input parameters
 npm install angular-cc-library --save
 ```
 
-## Formating Directive
+## Formatting Directive
 On the input fields, add the specific directive to format inputs. 
 All fields must be `type='tel'` in order to support spacing and additional characters
 
@@ -60,8 +60,8 @@ Will support format of MM/YY or MM/YYYY
 Current only Model Validation is supported.
 To implement, import the validator library and apply the specific validator on each form control
 
-```javascript
-import { CreditCardValidator } from 'angular-cc-library';
+```typescript
+import { CreditCardValidators } from 'angular-cc-library';
 
 @Component({
   selector: 'app',
@@ -81,9 +81,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.form = this._fb.group({
-      creditCard: ['', [<any>CreditCardValidator.validateCCNumber]],
-      expirationDate: ['', [<any>CreditCardValidator.validateExpDate]],
-      cvc: ['', [<any>Validators.required, <any>Validators.minLength(3), <any>Validators.maxLength(4)]] 
+      creditCard: ['', [CreditCardValidators.validateCCNumber]],
+      expirationDate: ['', [CreditCardValidators.validateExpDate]],
+      cvc: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(4)]] 
     });
   }
 

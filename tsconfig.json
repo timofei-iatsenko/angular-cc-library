@@ -1,28 +1,38 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "noImplicitAny": true,
+    "noImplicitReturns": false,
+    "noImplicitThis": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": false,
     "sourceMap": true,
-    "inlineSources": true,
-    "emitDecoratorMetadata": true,
+    "declaration": false,
+    "downlevelIteration": true,
     "experimentalDecorators": true,
-    "noEmitHelpers": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
     "lib": [
-      "es6",
+      "es2018",
       "dom"
     ],
-    "types": [
-      "jasmine",
-      "node"
-    ]
+    "paths": {
+      "angular-cc-library/*": ["../angular-cc-library/src/*"],
+      "angular-cc-library": [
+        "dist/angular-cc-library/angular-cc-library",
+        "dist/angular-cc-library",
+        "projects/angular-cc-library/src/public-api.ts"
+      ]
+    }
   },
-  "exclude": [
-    "node_modules",
-    "example",
-    "src/specs"
-  ],
   "angularCompilerOptions": {
-    "genDir": "compiled"
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
   }
 }
