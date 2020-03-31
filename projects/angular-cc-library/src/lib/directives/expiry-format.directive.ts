@@ -3,10 +3,10 @@ import { CreditCard } from '../credit-card';
 import { NgControl } from '@angular/forms';
 
 @Directive({
-  selector: '[ccExp]',
+  selector: 'input[ccExp]',
 })
 export class ExpiryFormatDirective {
-  public target: HTMLInputElement;
+  private target: HTMLInputElement;
 
   constructor(
     private el: ElementRef,
@@ -63,23 +63,22 @@ export class ExpiryFormatDirective {
     const val = `${this.target.value}${digit}`;
 
     if (!/^\d+$/.test(digit)) {
-      if (/^\d$/.test(val) && (val !== '0' && val !== '1')) {
-        e.preventDefault();
-        setTimeout(() => {
-          this.updateValue(`0${val} / `);
-        });
-      } else if (/^\d\d$/.test(val)) {
-        e.preventDefault();
-        setTimeout(() => {
-          const m1 = parseInt(val[0], 10);
-          const m2 = parseInt(val[1], 10);
-          if (m2 > 2 && m1 !== 0) {
-            this.updateValue(`0${m1} / ${m2}`);
-          } else {
-            this.updateValue(`${val} / `);
-          }
-        });
+      return;
+    }
+
+    if (/^\d$/.test(val) && (val !== '0' && val !== '1')) {
+      e.preventDefault();
+      this.updateValue(`0${val} / `);
+    } else if (/^\d\d$/.test(val)) {
+      e.preventDefault();
+      const m1 = parseInt(val[0], 10);
+      const m2 = parseInt(val[1], 10);
+      if (m2 > 2 && m1 !== 0) {
+        this.updateValue(`0${m1} / ${m2}`);
+      } else {
+        this.updateValue(`${val} / `);
       }
+
     }
   }
 
@@ -115,24 +114,20 @@ export class ExpiryFormatDirective {
     }
     if (/\d\s\/\s$/.test(val)) {
       e.preventDefault();
-      setTimeout(() => {
-        this.updateValue(val.replace(/\d\s\/\s$/, ''));
-      });
+      this.updateValue(val.replace(/\d\s\/\s$/, ''));
     }
   }
 
   private reformatExpiry() {
-    setTimeout(() => {
-      let val = this.target.value;
-      val = CreditCard.replaceFullWidthChars(val);
-      val = CreditCard.formatExpiry(val);
-      const oldVal = this.target.value;
-      if (val !== oldVal) {
-        this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(val, this.target, (safeVal => {
-          this.updateValue(safeVal);
-        }));
-      }
-    });
-  }
+    const val = CreditCard.formatExpiry(
+      CreditCard.replaceFullWidthChars(this.target.value),
+    );
 
+    const oldVal = this.target.value;
+    if (val !== oldVal) {
+      this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(val, this.target, (safeVal => {
+        this.updateValue(safeVal);
+      }));
+    }
+  }
 }

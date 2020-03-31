@@ -3,11 +3,10 @@ import { CreditCard } from '../credit-card';
 import { NgControl } from '@angular/forms';
 
 @Directive({
-  selector: '[ccCVC]',
+  selector: 'input[ccCVC]',
 })
-
 export class CvcFormatDirective {
-  public target: HTMLInputElement;
+  private target: HTMLInputElement;
 
   constructor(
     private el: ElementRef,
@@ -36,28 +35,17 @@ export class CvcFormatDirective {
   }
 
   @HostListener('paste')
-  public onPaste() {
-    this.reformatCvc();
-  }
   @HostListener('change')
-  public onChange() {
-    this.reformatCvc();
-  }
   @HostListener('input')
-  public onInput() {
-    this.reformatCvc();
-  }
-
-  private reformatCvc() {
-    setTimeout(() => {
-      let val = CreditCard.replaceFullWidthChars(this.target.value);
-      val = val.replace(/\D/g, '').slice(0, 4);
-      const oldVal = this.target.value;
-      if (val !== oldVal) {
-        this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(val, this.target, (safeVal => {
-          this.updateValue(safeVal);
-        }));
-      }
-    });
+  public reformatCvc() {
+    const val = CreditCard.replaceFullWidthChars(this.target.value)
+      .replace(/\D/g, '')
+      .slice(0, 4);
+    const oldVal = this.target.value;
+    if (val !== oldVal) {
+      this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(val, this.target, (safeVal => {
+        this.updateValue(safeVal);
+      }));
+    }
   }
 }

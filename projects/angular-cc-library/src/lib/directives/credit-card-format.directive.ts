@@ -1,13 +1,17 @@
 import { Directive, ElementRef, HostListener, Optional, Self } from '@angular/core';
 import { CreditCard } from '../credit-card';
 import { NgControl } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 
 @Directive({
-  selector: '[ccNumber]',
+  selector: 'input[ccNumber]',
+  exportAs: 'ccNumber',
 })
 export class CreditCardFormatDirective {
-  public target: HTMLInputElement;
+  private target: HTMLInputElement;
   private cards = CreditCard.cards();
+
+  public resolvedScheme$ = new BehaviorSubject<string>('unknown');
 
   constructor(
     private el: ElementRef,
@@ -67,28 +71,15 @@ export class CreditCardFormatDirective {
   }
 
   private formatCardNumber(e: KeyboardEvent) {
-    let card;
-    let digit;
-    let length;
-    let upperLength;
-    let value;
-
-    digit = String.fromCharCode(e.which);
+    const digit = String.fromCharCode(e.which);
     if (!/^\d+$/.test(digit)) {
       return;
     }
 
-    value = this.target.value;
-
-    card = CreditCard.cardFromNumber(value + digit);
-
-    length = (value.replace(/\D/g, '') + digit).length;
-
-    upperLength = 19;
-
-    if (card) {
-      upperLength = card.length[card.length.length - 1];
-    }
+    const value = this.target.value;
+    const card = CreditCard.cardFromNumber(value + digit);
+    const length = (value.replace(/\D/g, '') + digit).length;
+    const upperLength = card ? card.length[card.length.length - 1] : 19;
 
     if (length >= upperLength) {
       return;
@@ -122,15 +113,14 @@ export class CreditCardFormatDirective {
   }
 
   private setCardType() {
-    let card;
-    const val = this.target.value;
-    const cardType = CreditCard.cardType(val) || 'unknown';
+    const cardType = CreditCard.cardType(this.target.value) || 'unknown';
+
+    this.resolvedScheme$.next(cardType);
 
     if (!this.target.classList.contains(cardType)) {
-      for (let i = 0, len = this.cards.length; i < len; i++) {
-        card = this.cards[i];
+      this.cards.forEach((card) => {
         this.target.classList.remove(card.type);
-      }
+      });
 
       this.target.classList.remove('unknown');
       this.target.classList.add(cardType);
@@ -139,15 +129,14 @@ export class CreditCardFormatDirective {
   }
 
   private reFormatCardNumber() {
-    setTimeout(() => {
-      let value = CreditCard.replaceFullWidthChars(this.target.value);
-      value = CreditCard.formatCardNumber(value);
-      const oldValue = this.target.value;
-      if (value !== oldValue) {
-        this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(value, this.target, (safeVal => {
-          this.updateValue(safeVal);
-        }));
-      }
-    });
+    const value = CreditCard.formatCardNumber(
+      CreditCard.replaceFullWidthChars(this.target.value),
+    );
+    const oldValue = this.target.value;
+    if (value !== oldValue) {
+      this.target.selectionStart = this.target.selectionEnd = CreditCard.safeVal(value, this.target, (safeVal => {
+        this.updateValue(safeVal);
+      }));
+    }
   }
 }

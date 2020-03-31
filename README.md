@@ -36,14 +36,24 @@ export class AppModule {
 }
 ```
 
-**Credit Card Formater**
+**Credit Card Formatter**
 * add `ccNumber` directive:
 ```html
 <input id="cc-number" type="tel" autocomplete="cc-number" ccNumber>
 ```
 * this will also apply a class name based off the card `.visa`, `.amex`, etc. See the array of card types in `credit-card.ts` for all available types
 
-**Expiration Date Formater**
+* You can get parsed card type by using export api: 
+
+```html
+<input type="tel" ccNumber #ccNumber="ccNumber">
+<span class="scheme">{{ccNumber.resolvedScheme$ | async}}</span>
+```
+
+`resolvedScheme$` will be populated with `visa`, `amex`, etc.
+
+
+**Expiration Date Formatter**
 Will support format of MM/YY or MM/YYYY
 * add `ccExp` directive:
 ```html
@@ -96,7 +106,7 @@ export class AppComponent implements OnInit {
 
 # Inspiration
 
-Based on Stripe's [jquery.payment](https://github.com/stripe/jquery.payment) plugin but adapted for use by Angular2
+Based on Stripe's [jquery.payment](https://github.com/stripe/jquery.payment) plugin but adapted for use by Angular
 
 # License
 
