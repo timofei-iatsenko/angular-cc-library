@@ -3,7 +3,7 @@ import { CreditCard } from '../credit-card';
 import { NgControl } from '@angular/forms';
 
 @Directive({
-  selector: 'input[ccExp]',
+  selector: '[ccExp]',
 })
 export class ExpiryFormatDirective {
   private target: HTMLInputElement;

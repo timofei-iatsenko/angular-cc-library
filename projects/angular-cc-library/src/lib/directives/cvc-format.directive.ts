@@ -3,7 +3,7 @@ import { CreditCard } from '../credit-card';
 import { NgControl } from '@angular/forms';
 
 @Directive({
-  selector: 'input[ccCVC]',
+  selector: '[ccCVC]',
 })
 export class CvcFormatDirective {
   private target: HTMLInputElement;

@@ -4,7 +4,7 @@ import { NgControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 
 @Directive({
-  selector: 'input[ccNumber]',
+  selector: '[ccNumber]',
   exportAs: 'ccNumber',
 })
 export class CreditCardFormatDirective {
