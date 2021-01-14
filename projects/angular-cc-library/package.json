@@ -19,9 +19,11 @@
     "type": "git",
     "url": "git+https://github.com/nogorilla/angular-cc-library.git"
   },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "peerDependencies": {
-    "@angular/common": ">6 <10",
-    "@angular/core": ">6 <10",
-    "tslib": "^1.10.0"
+    "@angular/common": ">6 <11",
+    "@angular/core": ">6 <11"
   }
 }
