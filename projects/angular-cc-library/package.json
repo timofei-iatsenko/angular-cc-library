@@ -23,7 +23,7 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/common": ">6 <10",
-    "@angular/core": ">6 <10"
+    "@angular/common": ">6 <12",
+    "@angular/core": ">6 <12"
   }
 }
