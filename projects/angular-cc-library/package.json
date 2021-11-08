@@ -1,6 +1,6 @@
 {
   "name": "angular-cc-library",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "angular credit card library",
   "keywords": [
     "angular",
@@ -12,18 +12,18 @@
   "author": "nogorilla <gabriel.smith010@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nogorilla/angular-cc-library/issues"
+    "url": "https://github.com/thekip/angular-cc-library/issues"
   },
-  "homepage": "https://github.com/nogorilla/angular-cc-library#readme",
+  "homepage": "https://github.com/thekip/angular-cc-library#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nogorilla/angular-cc-library.git"
+    "url": "git+https://github.com/thekip/angular-cc-library.git"
   },
   "dependencies": {
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/common": ">6 <12",
-    "@angular/core": ">6 <12"
+    "@angular/common": ">6 <13",
+    "@angular/core": ">6 <13"
   }
 }
