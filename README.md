@@ -15,6 +15,12 @@ Angular CC Library - for validation and formating of input parameters
 npm install angular-cc-library --save
 ```
 
+
+## Version Compatibility
+Version `3.*` and above built with [partial Ivy metadata](https://angular.io/guide/creating-libraries#ensuring-library-version-compatibility) and compatible with Angular >= 13 .
+
+If you use an older version of Angular please use version `2.*`
+
 ## Formatting Directive
 On the input fields, add the specific directive to format inputs. 
 All fields must be `type='tel'` in order to support spacing and additional characters

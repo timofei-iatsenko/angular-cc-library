@@ -1,6 +1,6 @@
 {
   "name": "angular-cc-library",
-  "version": "2.1.3",
+  "version": "3.0.0",
   "description": "angular credit card library",
   "keywords": [
     "angular",
@@ -20,10 +20,11 @@
     "url": "git+https://github.com/thekip/angular-cc-library.git"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+
   },
   "peerDependencies": {
-    "@angular/common": ">6 <13",
-    "@angular/core": ">6 <13"
+    "@angular/common": "13",
+    "@angular/core": "13",
+    "tslib": "^2.1.0"
   }
 }
