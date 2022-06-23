@@ -23,8 +23,8 @@
 
   },
   "peerDependencies": {
-    "@angular/common": "13",
-    "@angular/core": "13",
+    "@angular/common": "13 - 14",
+    "@angular/core": "13 - 14",
     "tslib": "^2.1.0"
   }
 }
