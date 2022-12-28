@@ -15,11 +15,15 @@ Angular CC Library - for validation and formating of input parameters
 npm install angular-cc-library --save
 ```
 
-
 ## Version Compatibility
-Version `3.*` and above built with [partial Ivy metadata](https://angular.io/guide/creating-libraries#ensuring-library-version-compatibility) and compatible with Angular >= 13 .
 
-If you use an older version of Angular please use version `2.*`
+| Angular | Library |
+|---------|---------|
+| 15.x    | 3.1.x   |
+| 14.x    | 3.0.4   |
+| 13.x    | 3.0.0   |
+| 12.x    | 2.1.3   |
+
 
 ## Formatting Directive
 On the input fields, add the specific directive to format inputs. 
