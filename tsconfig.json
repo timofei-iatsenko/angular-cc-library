@@ -17,22 +17,19 @@
     "module": "es2020",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "ES2022",
+    "target": "es2020",
     "lib": [
       "es2018",
       "dom"
     ],
     "paths": {
-      "angular-cc-library/*": [
-        "../angular-cc-library/src/*"
-      ],
+      "angular-cc-library/*": ["../angular-cc-library/src/*"],
       "angular-cc-library": [
         "dist/angular-cc-library/angular-cc-library",
         "dist/angular-cc-library",
         "projects/angular-cc-library/src/public-api.ts"
       ]
-    },
-    "useDefineForClassFields": false
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
