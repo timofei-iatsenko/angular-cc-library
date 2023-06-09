@@ -5954,11 +5954,6 @@ ng-packagr@^16.0.1:
   optionalDependencies:
     esbuild "^0.17.0"
 
-ngx-deploy-npm@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-deploy-npm/-/ngx-deploy-npm-6.0.0.tgz#860675a7f08efd9058ed2be62ce031ab2c7ae9c2"
-  integrity sha512-gfj4ZIAguZ4JJF/WOIGYktwi1BKtHRYz1TUJV4a5qBwRaBunSu1/oW9K+sApwGfegMtrblDjMoLl10OZWgqx+A==
-
 nice-napi@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/nice-napi/-/nice-napi-1.0.2.tgz#dc0ab5a1eac20ce548802fc5686eaa6bc654927b"

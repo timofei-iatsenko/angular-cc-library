@@ -19,6 +19,7 @@ npm install angular-cc-library --save
 
 | Angular | Library |
 |---------|---------|
+| 16.x    | 3.2.x   |
 | 15.x    | 3.1.x   |
 | 14.x    | 3.0.4   |
 | 13.x    | 3.0.0   |
