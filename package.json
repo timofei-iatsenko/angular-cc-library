@@ -1,6 +1,6 @@
 {
   "name": "angular-cc-library",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "scripts": {
     "run:demo": "ng serve example",
     "build:library": "ng build angular-cc-library --configuration production ",
@@ -8,38 +8,37 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy": "ng deploy angular-cc-library",
-    "postinstall": "ngcc",
     "precommit": "lint-staged"
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "^15.0.4",
-    "@angular/compiler": "^15.0.4",
-    "@angular/core": "^15.0.4",
-    "@angular/forms": "^15.0.4",
-    "@angular/platform-browser": "^15.0.4",
-    "@angular/platform-browser-dynamic": "^15.0.4",
-    "rxjs": "~6.6.3",
+    "@angular/common": "^16.0.5",
+    "@angular/compiler": "^16.0.5",
+    "@angular/core": "^16.0.5",
+    "@angular/forms": "^16.0.5",
+    "@angular/platform-browser": "^16.0.5",
+    "@angular/platform-browser-dynamic": "^16.0.5",
+    "rxjs": "~7.8.1",
     "tslib": "^2.1.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.13.0"
   },
   "devDependencies": {
     "@angular-builders/jest": "15.0.0",
-    "@angular-devkit/build-angular": "^15.0.4",
-    "@angular/cli": "^15.0.4",
-    "@angular/compiler-cli": "^15.0.4",
-    "@angular/language-service": "^15.0.4",
-    "@types/jest": "^27.5.2",
+    "@angular-devkit/build-angular": "^16.0.5",
+    "@angular/cli": "^16.0.5",
+    "@angular/compiler-cli": "^16.0.5",
+    "@angular/language-service": "^16.0.5",
+    "@types/jest": "^29.5.2",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "husky": "^4.2.3",
-    "jest": "28.1.1",
+    "jest": "29.5.0",
     "lint-staged": "^11.2.6",
-    "ng-packagr": "^15.0.3",
-    "ngx-deploy-npm": "^4.3.10",
+    "ng-packagr": "^16.0.1",
+    "ngx-deploy-npm": "^6.0.0",
     "ts-node": "~9.1.1",
     "tslint": "~6.1.3",
-    "typescript": "~4.8.4"
+    "typescript": "~5.0.4"
   },
   "lint-staged": {
     "*.ts": [
