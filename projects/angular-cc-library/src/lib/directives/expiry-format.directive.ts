@@ -4,6 +4,7 @@ import { NgControl } from '@angular/forms';
 
 @Directive({
   selector: '[ccExp]',
+  standalone: true,
 })
 export class ExpiryFormatDirective {
   private target: HTMLInputElement;

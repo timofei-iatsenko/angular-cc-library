@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 @Directive({
   selector: '[ccNumber]',
   exportAs: 'ccNumber',
+  standalone: true,
 })
 export class CreditCardFormatDirective {
   private target: HTMLInputElement;

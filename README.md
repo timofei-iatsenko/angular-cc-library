@@ -19,6 +19,7 @@ npm install angular-cc-library --save
 
 | Angular | Library |
 |---------|---------|
+| 17.x    | 3.3.x   |
 | 16.x    | 3.2.x   |
 | 15.x    | 3.1.x   |
 | 14.x    | 3.0.4   |
@@ -27,10 +28,27 @@ npm install angular-cc-library --save
 
 
 ## Formatting Directive
-On the input fields, add the specific directive to format inputs. 
-All fields must be `type='tel'` in order to support spacing and additional characters
+On the input fields, add the specific directive to format inputs.
+All fields must be `type='tel'` in order to support spacing and additional characters.
 
-```javascript
+Since `angular-cc-library@3.3.0` all directives declared as standalone, so you can import them directly into your component:
+
+```typescript
+import { Component } from '@angular/core';
+import { CreditCardFormatDirective } from 'angular-cc-library';
+
+@Component({
+  selector: 'credit-card-number-input',
+  standalone: true,
+  deps: [CreditCardFormatDirective],
+  template: `<input id="cc-number" type="tel" autocomplete="cc-number" ccNumber>`
+})
+export class CreditCardNumberInputComponent {}
+```
+
+But you can still import them all at once using `CreditCardDirectivesModule`:
+
+```typescript
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';

@@ -4,6 +4,7 @@ import { NgControl } from '@angular/forms';
 
 @Directive({
   selector: '[ccCVC]',
+  standalone: true,
 })
 export class CvcFormatDirective {
   private target: HTMLInputElement;
