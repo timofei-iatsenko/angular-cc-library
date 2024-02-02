@@ -176,7 +176,9 @@ export class CreditCard {
 
     try {
       cursor = target.selectionStart;
-    } catch (error) {}
+    } catch (error) {
+      // do nothing
+    }
 
     updateValue(value);
 
@@ -238,7 +240,6 @@ export class CreditCard {
     let value = '';
     const chars = str.split('');
 
-    // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < chars.length; i++) {
       let chr = chars[i];
       const idx = fullWidth.indexOf(chr);
@@ -289,10 +290,8 @@ export class CreditCard {
     let odd = true;
     let sum = 0;
 
-    // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < digits.length; i++) {
       let digit = parseInt(digits[i], 10);
-      // tslint:disable-next-line:no-conditional-assignment
       if ((odd = !odd)) {
         digit *= 2;
       }

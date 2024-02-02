@@ -3,7 +3,10 @@
   "version": 1,
   "cli": {
     "packageManager": "yarn",
-    "analytics": "d3a9c97d-1dcd-4643-99bd-20d73f0a2164"
+    "analytics": "d3a9c97d-1dcd-4643-99bd-20d73f0a2164",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -28,7 +31,16 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "tsconfig.spec.json",
+            "tsConfig": "tsconfig.spec.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/angular-cc-library/**/*.ts",
+              "projects/angular-cc-library/**/*.html"
+            ]
           }
         },
         "deploy": {
@@ -127,6 +139,15 @@
             "production": {
               "devServerTarget": "example:serve:production"
             }
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/example/**/*.ts",
+              "projects/example/**/*.html"
+            ]
           }
         }
       }

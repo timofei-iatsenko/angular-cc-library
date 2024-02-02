@@ -40,7 +40,7 @@ export class CreditCardValidators {
     }
 
     if (typeof control.value !== 'undefined' && control.value.length >= 5) {
-      let [month, year] = control.value.split(/[\s\/]+/, 2);
+      let [month, year] = control.value.split(/[\s/]+/, 2);
 
       if ((year != null ? year.length : void 0) === 2 && /^\d+$/.test(year)) {
         const prefix = new Date().getFullYear().toString().slice(0, 2);
