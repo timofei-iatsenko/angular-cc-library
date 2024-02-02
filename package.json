@@ -1,6 +1,6 @@
 {
   "name": "angular-cc-library",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "scripts": {
     "run:demo": "ng serve example",
     "build:demo": "ng build example --configuration production",
