@@ -3,6 +3,7 @@
   "version": "3.2.0",
   "scripts": {
     "run:demo": "ng serve example",
+    "build:demo": "ng build example --configuration production",
     "build:library": "ng build angular-cc-library --configuration production ",
     "test": "ng test",
     "lint": "ng lint",
