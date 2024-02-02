@@ -1,6 +1,14 @@
-# Description
+<div align="center">
+<h1>Angular CC Library</h1>
 
-Angular CC Library - for validation and formating of input parameters
+Validation and formatting input parameters of Credit Cards
+
+<hr />
+
+[![Version][badge-version]][package]
+[![Downloads][badge-downloads]][package]
+
+</div>
 
 # Demo
 1. Clone repo
@@ -31,7 +39,8 @@ npm install angular-cc-library --save
 On the input fields, add the specific directive to format inputs.
 All fields must be `type='tel'` in order to support spacing and additional characters.
 
-Since `angular-cc-library@3.3.0` all directives declared as standalone, so you can import them directly into your component:
+Since `angular-cc-library@3.3.0` all directives declared as standalone, 
+so you can import them directly into your component:
 
 ```typescript
 import { Component } from '@angular/core';
@@ -140,3 +149,7 @@ Based on Stripe's [jquery.payment](https://github.com/stripe/jquery.payment) plu
 # License
 
 MIT
+
+[badge-downloads]: https://img.shields.io/npm/dw/angular-cc-library.svg
+[badge-version]: https://img.shields.io/npm/v/angular-cc-library.svg
+[package]: https://www.npmjs.com/package/angular-cc-library
