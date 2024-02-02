@@ -1,0 +1,38 @@
+{
+  "git": {
+    "push": true,
+    "commit": true,
+    "commitMessage": "chore: version ${version} [skip ci]",
+    "requireBranch": "master",
+    "tag": true
+  },
+  "github": {
+    "release": true,
+    "autoGenerate": true,
+    "releaseName": "${version}"
+  },
+  "npm": {
+    "publish": true,
+    "publishPath": "dist/angular-cc-library"
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          {
+            "type": "feat",
+            "section": "Features"
+          },
+          {
+            "type": "fix",
+            "section": "Bug Fixes"
+          },
+          {}
+        ]
+      },
+      "infile": "CHANGELOG.md",
+      "header": "# Change Log"
+    }
+  }
+}
