@@ -33,6 +33,9 @@
       },
       "infile": "CHANGELOG.md",
       "header": "# Change Log"
+    },
+    "@release-it/bumper": {
+      "out": ["dist/angular-cc-library/package.json", "projects/angular-cc-library/package.json"]
     }
   }
 }
