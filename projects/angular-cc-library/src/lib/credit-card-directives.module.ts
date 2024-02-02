@@ -11,7 +11,7 @@ const CREDIT_CARD_LIBRARY_DIRECTIVES = [
 ];
 
 @NgModule({
-  declarations: [CREDIT_CARD_LIBRARY_DIRECTIVES],
+  imports: [CREDIT_CARD_LIBRARY_DIRECTIVES],
   exports: [CREDIT_CARD_LIBRARY_DIRECTIVES],
 })
 export class CreditCardDirectivesModule {
