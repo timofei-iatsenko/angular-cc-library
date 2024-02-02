@@ -11,6 +11,11 @@ Validation and formatting input parameters of Credit Cards
 </div>
 
 # Demo
+
+https://thekip.github.io/angular-cc-library/
+
+Or run locally:
+
 1. Clone repo
 2. run `yarn install`
 3. run `yarn run:demo`
