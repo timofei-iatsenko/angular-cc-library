@@ -1,6 +1,6 @@
 {
   "name": "angular-cc-library",
-  "version": "3.4.0",
+  "version": "3.3.0",
   "scripts": {
     "run:demo": "ng serve example",
     "build:demo": "ng build example --configuration production",
@@ -12,7 +12,6 @@
     "precommit": "lint-staged",
     "prepare": "husky"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "^18.2.2",
     "@angular/compiler": "^18.2.2",
