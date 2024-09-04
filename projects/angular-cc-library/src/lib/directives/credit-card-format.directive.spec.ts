@@ -29,7 +29,8 @@ describe('Directive: CreditCardFormat', () => {
     let inputEl: DebugElement;
     beforeEach(() => {
       TestBed.configureTestingModule({
-        declarations: [TestCreditCardFormatComponent, CreditCardFormatDirective],
+        declarations: [TestCreditCardFormatComponent],
+        imports: [CreditCardFormatDirective]
       });
       fixture = TestBed.createComponent(TestCreditCardFormatComponent);
       inputEl = fixture.debugElement.query(By.css('input'));
@@ -152,7 +153,8 @@ describe('Directive: CreditCardFormat', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        declarations: [TestCreditCardFormatComponent, CreditCardFormatDirective],
+        declarations: [TestCreditCardFormatComponent],
+        imports: [CreditCardFormatDirective],
       });
       fixture = TestBed.createComponent(TestCreditCardFormatComponent);
       inputEl = fixture.debugElement.query(By.css('input'));

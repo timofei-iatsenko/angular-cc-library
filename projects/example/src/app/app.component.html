@@ -5,8 +5,10 @@
     <p>A general purpose library for building credit card forms, validating inputs and formatting numbers.</p>
     <div class="form-group">
         <label for="cc-number" class="control-label">Card number formatting
-            <small class="text-muted"
-                   *ngIf="type$ | async as type">[<span class="cc-brand">{{type}}</span>]</small></label>
+            @if(type$ | async; as type) {
+                <small class="text-muted">[<span class="cc-brand">{{type}}</span>]</small>
+            }            
+        </label>
         <input id="cc-number"
                (input)="goToNextField('creditCard', expireInput)"
                formControlName="creditCard"
@@ -44,9 +46,15 @@
     </div>
 
     <div class="errors">
-        <div *ngIf="!demoForm.controls.creditCard.valid && demoForm.controls.creditCard.dirty" class="alert alert-danger">Credit Card is invalid</div>
-        <div *ngIf="!demoForm.controls.expDate.valid && demoForm.controls.expDate.dirty" class="alert alert-danger">Expiration Date is required</div>
-        <div *ngIf="!demoForm.controls.cvc.valid  && demoForm.controls.cvc.dirty" class="alert alert-danger">CVC is required</div>
+        @if(!demoForm.controls.creditCard.valid && demoForm.controls.creditCard.dirty){
+            <div class="alert alert-danger">Credit Card is invalid</div>
+        }
+        @if(!demoForm.controls.expDate.valid && demoForm.controls.expDate.dirty){
+            <div class="alert alert-danger">Expiration Date is required</div>
+        }
+        @if(!demoForm.controls.cvc.valid  && demoForm.controls.cvc.dirty){
+            <div class="alert alert-danger">CVC is required</div>
+        }        
     </div>
 </form>
 
