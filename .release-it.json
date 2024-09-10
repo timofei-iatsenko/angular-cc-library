@@ -13,7 +13,7 @@
   },
   "npm": {
     "publish": true,
-    "publishPath": "dist/angular-cc-library"
+    "publishPath": "./dist/angular-cc-library"
   },
   "plugins": {
     "@release-it/conventional-changelog": {
