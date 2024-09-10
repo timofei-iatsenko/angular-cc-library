@@ -12,7 +12,7 @@ Validation and formatting input parameters of Credit Cards
 
 # Demo
 
-https://thekip.github.io/angular-cc-library/
+https://timofei-iatsenko.github.io/angular-cc-library/
 
 Or run locally:
 
