@@ -12,12 +12,12 @@
   "author": "nogorilla <gabriel.smith010@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thekip/angular-cc-library/issues"
+    "url": "https://github.com/timofei-iatsenko/angular-cc-library/issues"
   },
-  "homepage": "https://github.com/thekip/angular-cc-library#readme",
+  "homepage": "https://github.com/timofei-iatsenko/angular-cc-library#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thekip/angular-cc-library.git"
+    "url": "git+https://github.com/timofei-iatsenko/angular-cc-library.git"
   },
   "dependencies": {
     "tslib": "^2.4.1"
