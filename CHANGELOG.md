@@ -1,5 +1,12 @@
 # Change Log
 
+## [3.4.0](https://github.com/timofei-iatsenko/angular-cc-library/compare/v3.3.0...v3.4.0) (2024-09-10)
+
+
+### Features
+
+* update to angular 18 ([39fb63b](https://github.com/timofei-iatsenko/angular-cc-library/commit/39fb63b45eeced1cfa3d3a44d6f3531fc4c3a27a))
+
 ## [3.3.0](https://github.com/thekip/angular-cc-library/compare/v3.2.0...v3.3.0) (2024-02-02)
 
 
