@@ -2,6 +2,7 @@ import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testin
 import { CreditCardFormatDirective } from './credit-card-format.directive';
 import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 const KEY_MAP = {
   ONE: 49, // input `1`
@@ -22,6 +23,7 @@ describe('Directive: CreditCardFormat', () => {
   describe('general cases', () => {
     @Component({
       template: `<input type="tel" ccNumber>`,
+      imports: [CreditCardFormatDirective],
     })
     class TestCreditCardFormatComponent {}
 
@@ -29,8 +31,7 @@ describe('Directive: CreditCardFormat', () => {
     let inputEl: DebugElement;
     beforeEach(() => {
       TestBed.configureTestingModule({
-        declarations: [TestCreditCardFormatComponent],
-        imports: [CreditCardFormatDirective]
+        imports: [TestCreditCardFormatComponent]
       });
       fixture = TestBed.createComponent(TestCreditCardFormatComponent);
       inputEl = fixture.debugElement.query(By.css('input'));
@@ -145,7 +146,9 @@ describe('Directive: CreditCardFormat', () => {
     @Component({
       template: `<input type="tel" ccNumber #ccNumber="ccNumber">
       <span class="scheme">{{ccNumber.resolvedScheme$ | async}}</span>`,
+      imports: [CreditCardFormatDirective, CommonModule],
     })
+    
     class TestCreditCardFormatComponent {}
 
     let fixture: ComponentFixture<TestCreditCardFormatComponent>;
@@ -153,11 +156,10 @@ describe('Directive: CreditCardFormat', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        declarations: [TestCreditCardFormatComponent],
-        imports: [CreditCardFormatDirective],
+        imports: [TestCreditCardFormatComponent]
       });
       fixture = TestBed.createComponent(TestCreditCardFormatComponent);
-      inputEl = fixture.debugElement.query(By.css('input'));
+      inputEl = fixture.debugElement.query(By.css('input'));      
     });
 
     it('should provide resolved scheme via exportAs', () => {

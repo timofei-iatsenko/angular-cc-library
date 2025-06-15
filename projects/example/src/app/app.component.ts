@@ -6,10 +6,9 @@ import { defer } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, AsyncPipe, CreditCardDirectivesModule]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    imports: [FormsModule, ReactiveFormsModule, AsyncPipe, CreditCardDirectivesModule]
 })
 export class AppComponent {
   public demoForm = this.fb.group({
