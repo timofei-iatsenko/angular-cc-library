@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Validators, FormGroup, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreditCardValidators, CreditCard, CreditCardDirectivesModule } from 'angular-cc-library';
 import { defer } from 'rxjs';
@@ -11,6 +11,8 @@ import { map } from 'rxjs/operators';
     imports: [FormsModule, ReactiveFormsModule, AsyncPipe, CreditCardDirectivesModule]
 })
 export class AppComponent {
+  private fb = inject(FormBuilder);
+
   public demoForm = this.fb.group({
     creditCard: ['', [CreditCardValidators.validateCCNumber]],
     expDate: ['', [CreditCardValidators.validateExpDate]],
@@ -21,8 +23,6 @@ export class AppComponent {
 
   public type$ = defer(() => this.demoForm.get('creditCard').valueChanges)
     .pipe(map((num: string) => CreditCard.cardType(num)));
-
-  constructor(private fb: FormBuilder) {}
 
   public goToNextField(controlName: string, nextField: HTMLInputElement) {
     if (this.demoForm.get(controlName)?.valid) {

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Optional, Self } from '@angular/core';
+import { Directive, ElementRef, HostListener, inject } from '@angular/core';
 import { CreditCard } from '../credit-card';
 import { NgControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
@@ -9,17 +9,12 @@ import { BehaviorSubject } from 'rxjs';
   standalone: true,
 })
 export class CreditCardFormatDirective {
-  private target: HTMLInputElement;
+  private el = inject(ElementRef);
+  private target: HTMLInputElement = this.el.nativeElement;
+  private control = inject(NgControl, { optional: true, self: true });
   private cards = CreditCard.cards();
 
   public resolvedScheme$ = new BehaviorSubject<string>('unknown');
-
-  constructor(
-    private el: ElementRef,
-    @Self() @Optional() private control: NgControl,
-  ) {
-    this.target = this.el.nativeElement;
-  }
 
   /**
    * Updates the value to target element, or FormControl if exists.

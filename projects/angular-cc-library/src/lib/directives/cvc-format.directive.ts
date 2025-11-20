@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Optional, Self } from '@angular/core';
+import { Directive, ElementRef, HostListener, inject } from '@angular/core';
 import { CreditCard } from '../credit-card';
 import { NgControl } from '@angular/forms';
 
@@ -7,14 +7,9 @@ import { NgControl } from '@angular/forms';
   standalone: true,
 })
 export class CvcFormatDirective {
-  private target: HTMLInputElement;
-
-  constructor(
-    private el: ElementRef,
-    @Self() @Optional() private control: NgControl,
-  ) {
-    this.target = this.el.nativeElement;
-  }
+  private el = inject(ElementRef);
+  private target: HTMLInputElement = this.el.nativeElement;
+  private control = inject(NgControl, { optional: true, self: true });
 
   /**
    * Updates the value to target element, or FormControl if exists.

@@ -176,7 +176,7 @@ export class CreditCard {
 
     try {
       cursor = target.selectionStart;
-    } catch (error) {
+    } catch {
       // do nothing
     }
 
