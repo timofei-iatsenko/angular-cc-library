@@ -32,7 +32,8 @@ npm install angular-cc-library --save
 ## Version Compatibility
 
 | Angular | Library |
-| ------- | ------- |
+|---------|---------|
+| 20.x    | 3.6.x   |
 | 19.x    | 3.5.x   |
 | 18.x    | 3.4.x   |
 | 17.x    | 3.3.x   |
