@@ -1,5 +1,10 @@
 # Change Log
 
+* ci: setup release-it for trusted publishing (29353c2)
+* ci: update actions in deploy demo workflow (4487ea4)
+* ci: setup trusted publishing (1d45fbd)
+* Angular 20 upgrade (#132) (bddc4cd)
+
 ## [3.5.0](https://github.com/nogorilla/angular-cc-library/compare/v3.4.0...v3.5.0) (2025-09-17)
 
 ## [3.4.0](https://github.com/timofei-iatsenko/angular-cc-library/compare/v3.3.0...v3.4.0) (2024-09-10)
