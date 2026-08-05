@@ -1,6 +1,9 @@
 {
-  "name": "angular-cc-library",
-  "version": "3.5.1",
+  "name": "@ehsinc/angular-cc-library",
+  "version": "3.6.0",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "description": "angular credit card library",
   "keywords": [
     "angular",
