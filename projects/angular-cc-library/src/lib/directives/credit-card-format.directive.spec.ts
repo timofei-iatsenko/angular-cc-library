@@ -100,7 +100,7 @@ describe('Directive: CreditCardFormat', () => {
       expect(inputEl.nativeElement.value).toBe('4111 1111 11');
       expect(inputEl.nativeElement.selectionStart).toBe(3);
       expect(inputEl.nativeElement.selectionEnd).toBe(3);
-      expect(event.preventDefault).toBeCalled();
+      expect(event.preventDefault).toHaveBeenCalled();
 
     }));
 
@@ -119,7 +119,7 @@ describe('Directive: CreditCardFormat', () => {
       expect(inputEl.nativeElement.value).toBe('4111 111');
       expect(inputEl.nativeElement.selectionStart).toBe(0);
       expect(inputEl.nativeElement.selectionEnd).toBe(0);
-      expect(event.preventDefault).toBeCalled();
+      expect(event.preventDefault).toHaveBeenCalled();
 
     }));
 
@@ -137,7 +137,7 @@ describe('Directive: CreditCardFormat', () => {
       expect(inputEl.nativeElement.value).toBe('4111 1111 111');
       expect(inputEl.nativeElement.selectionStart).toBe(13);
       expect(inputEl.nativeElement.selectionEnd).toBe(13);
-      expect(event.preventDefault).not.toBeCalled();
+      expect(event.preventDefault).not.toHaveBeenCalled();
 
     }));
   });

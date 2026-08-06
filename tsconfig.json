@@ -18,10 +18,6 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
     "paths": {
       "angular-cc-library/*": [
         "../angular-cc-library/src/*"
