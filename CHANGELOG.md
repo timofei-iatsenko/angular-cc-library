@@ -1,5 +1,7 @@
 # Change Log
 
+* Angular 21 upgrade (#135) (44ede1e)
+
 * ci: setup release-it for trusted publishing (29353c2)
 * ci: update actions in deploy demo workflow (4487ea4)
 * ci: setup trusted publishing (1d45fbd)
